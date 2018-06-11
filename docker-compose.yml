@@ -1,0 +1,23 @@
+version: '2'
+services:
+  web:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - .:/gooderp
+      - gooderp-web-data:/var/lib/odoo
+      - /Users/chengdh/myproject/gooderp_addons:/mnt/extra-addons
+  db:
+    image: postgres:9.4
+    environment:
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - gooderp-db-data:/var/lib/postgresql/data/pgdata
+volumes:
+  gooderp-web-data:
+  gooderp-db-data:
