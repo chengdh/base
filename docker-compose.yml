@@ -12,6 +12,8 @@ services:
       - /Users/chengdh/myproject/gooderp_addons:/mnt/extra-addons
   db:
     image: postgres:9.4
+    ports:
+      - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
